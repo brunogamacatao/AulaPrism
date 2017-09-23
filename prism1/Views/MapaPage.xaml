@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage BackgroundColor="Red" 
+            Title="Page 1"
+            xmlns="http://xamarin.com/schemas/2014/forms" 
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+            xmlns:behaviors="clr-namespace:Prism.Behaviors;assembly=Prism.Forms" 
+            xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" 
+            xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+            prism:ViewModelLocator.AutowireViewModel="True" x:Class="prism1.Views.MapaPage">
+    <StackLayout VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" Padding="30">
+        <maps:Map HeightRequest="240"
+            x:Name="MyMap"
+            IsShowingUser="true"
+            MapType="Hybrid"
+        />
+    </StackLayout>
+</ContentPage>

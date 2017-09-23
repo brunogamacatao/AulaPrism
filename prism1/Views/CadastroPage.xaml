@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage BackgroundColor="Black" 
+            Title="Page 2"
+            xmlns="http://xamarin.com/schemas/2014/forms" 
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+            xmlns:behaviors="clr-namespace:Prism.Behaviors;assembly=Prism.Forms" 
+            xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" 
+            prism:ViewModelLocator.AutowireViewModel="True" x:Class="prism1.Views.CadastroPage">
+    <StackLayout>
+        <Label Text="Cadastro de Infrações" HorizontalOptions="FillAndExpand"/>
+        <Entry Text="{Binding Id}" Placeholder="Id" HorizontalOptions="FillAndExpand" Keyboard="Numeric"/>
+        <Entry Text="{Binding Usuario}" HorizontalOptions="FillAndExpand" Placeholder="Usuário"/>
+        <Entry Text="{Binding Descricao}" HorizontalOptions="FillAndExpand" Placeholder="Descrição"/>
+
+        <ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}"/>
+
+        <Button Command="{Binding OnAdicionaCommand}" 
+                  Text="Cadastrar"  TextColor="White"
+                  BackgroundColor="Black" 
+                  HorizontalOptions="FillAndExpand"/>        
+    </StackLayout>
+</ContentPage>

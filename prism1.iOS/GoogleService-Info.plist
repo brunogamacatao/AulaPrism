@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>840447678459-mfd3f98pd6m0b5gtcknm2rbq3fhj8vfg.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.840447678459-mfd3f98pd6m0b5gtcknm2rbq3fhj8vfg</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCsAjxp1mBph6T-OULgARpVajZejJnC2BY</string>
+	<key>GCM_SENDER_ID</key>
+	<string>840447678459</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>prism1.iOS</string>
+	<key>PROJECT_ID</key>
+	<string>prismauth</string>
+	<key>STORAGE_BUCKET</key>
+	<string>prismauth.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:840447678459:ios:074a848b9b5a2e9f</string>
+	<key>DATABASE_URL</key>
+	<string>https://prismauth.firebaseio.com</string>
+</dict>
+</plist>
