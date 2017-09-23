@@ -8,11 +8,11 @@
                         BackgroundColor="Red"
                         Command="{Binding OnNavigateCommand}"
                         CommandParameter="CustomNavigationPage/MapaPage"/>
-                <Button Text="Bateria"
+                <!--Button Text="Bateria"
                         TextColor="White"
                         BackgroundColor="Purple"
                         Command="{Binding OnNavigateCommand}"
-                        CommandParameter="CustomNavigationPage/EstadoBateriaPage"/>
+                        CommandParameter="CustomNavigationPage/EstadoBateriaPage"/-->
                 <Button Text="Cadastro"
                         TextColor="White"
                         BackgroundColor="Black"
