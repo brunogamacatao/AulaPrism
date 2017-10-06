@@ -6,17 +6,25 @@
             xmlns:behaviors="clr-namespace:Prism.Behaviors;assembly=Prism.Forms" 
             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" 
             prism:ViewModelLocator.AutowireViewModel="True" x:Class="prism1.Views.CadastroPage">
-    <StackLayout>
-        <Label Text="Cadastro de Infrações" HorizontalOptions="FillAndExpand"/>
-        <Entry Text="{Binding Id}" Placeholder="Id" HorizontalOptions="FillAndExpand" Keyboard="Numeric"/>
-        <Entry Text="{Binding Usuario}" HorizontalOptions="FillAndExpand" Placeholder="Usuário"/>
-        <Entry Text="{Binding Descricao}" HorizontalOptions="FillAndExpand" Placeholder="Descrição"/>
+    <ScrollView>
+        <StackLayout VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" Padding="30">
+            <Label Text="Cadastro de Infrações" HorizontalOptions="FillAndExpand"/>
+            <Entry Text="{Binding Id}" Placeholder="Id" HorizontalOptions="FillAndExpand" Keyboard="Numeric"/>
+            <Entry Text="{Binding Descricao}" HorizontalOptions="FillAndExpand" Placeholder="Descrição"/>
 
-        <ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}"/>
+            <ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}"/>
 
-        <Button Command="{Binding OnAdicionaCommand}" 
-                  Text="Cadastrar"  TextColor="White"
-                  BackgroundColor="Black" 
-                  HorizontalOptions="FillAndExpand"/>        
-    </StackLayout>
+            <Image Source="{Binding FotoSource}" IsVisible="{Binding TemFoto}" HorizontalOptions="FillAndExpand"/>
+            
+            <Button Command="{Binding OnTirarFotoCommand}" 
+                      Text="Tirar Foto"  TextColor="White"
+                      BackgroundColor="Blue" 
+                      HorizontalOptions="FillAndExpand"/>        
+
+            <Button Command="{Binding OnAdicionaCommand}" 
+                      Text="Cadastrar"  TextColor="White"
+                      BackgroundColor="Black" 
+                      HorizontalOptions="FillAndExpand"/>        
+        </StackLayout>
+    </ScrollView>
 </ContentPage>

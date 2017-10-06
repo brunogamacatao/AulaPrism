@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Firebase.Database;
 using Firebase.Database.Query;
+using Firebase.Storage;
 using prism1.Models;
 using prism1.Services;
 
@@ -20,8 +21,29 @@ namespace prism1.Droid.Services
             _autenticacaoService = autenticacaoService;
         }
 
-        public async Task<Infracao> Adiciona(Infracao infracao)
+        public async Task<Infracao> Adiciona(Infracao infracao, System.IO.Stream photoStream)
         {
+            if (photoStream != null) 
+            {
+				// Envia a foto para o servidor
+                var task = new FirebaseStorage(
+                    "prismauth.appspot.com", 
+                    new FirebaseStorageOptions() {
+                        AuthTokenAsyncFactory = () => Task.FromResult(_autenticacaoService.Token)
+                    }
+                )
+            	.Child("fotografias")
+            	.Child(Guid.NewGuid().ToString("N") + ".png")
+            	.PutAsync(photoStream);
+                
+                infracao.Foto = await task;
+            }
+
+            // Define o usuário da infração para ser o user id
+            // do usuário logado
+            infracao.Usuario = _autenticacaoService.UserId;
+
+            // Grava a infração no Banco de Dados
             return (await Client.Child(CHILD_NAME).PostAsync(infracao)).Object;
         }
 

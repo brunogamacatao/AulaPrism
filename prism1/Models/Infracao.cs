@@ -6,6 +6,7 @@ namespace prism1.Models
         public string Id { get; set; }
         public string Usuario { get; set; }
         public string Descricao { get; set; }
+        public string Foto { get; set; }
 
         public override string ToString()
         {

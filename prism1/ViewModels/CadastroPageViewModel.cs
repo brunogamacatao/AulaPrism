@@ -5,6 +5,7 @@ using Prism.Mvvm;
 using Prism.Services;
 using prism1.Models;
 using prism1.Services;
+using Xamarin.Forms;
 
 namespace prism1.ViewModels
 {
@@ -14,11 +15,15 @@ namespace prism1.ViewModels
 		private IInfracoesService _infracoesService;
 
 		private string _id;
-        private string _usuario;
         private string _descricao;
         private bool _isLoading = false;
+        private bool _temFoto = false;
+        private ImageSource _fotoSource;
+
+        private System.IO.Stream photoStream;
 
         public ICommand OnAdicionaCommand { get; set; }
+        public ICommand OnTirarFotoCommand { get; set; }
 
         public CadastroPageViewModel(IPageDialogService pageDialogService, 
                                   IInfracoesService infracoesService) 
@@ -26,6 +31,7 @@ namespace prism1.ViewModels
             _pageDialogService = pageDialogService;
             _infracoesService = infracoesService;
             OnAdicionaCommand = new DelegateCommand(Adiciona).ObservesCanExecute(() => FormularioValido);
+            OnTirarFotoCommand = new DelegateCommand(TirarFoto).ObservesCanExecute(() => FormularioValido);
         }
 
         public async void Adiciona()
@@ -34,18 +40,28 @@ namespace prism1.ViewModels
 
             var novaInfracao = await _infracoesService.Adiciona(new Infracao() {
                 Id = Id,
-                Usuario = Usuario,
                 Descricao = Descricao
-            });
+            }, photoStream);
 
             IsLoading = false;
 
             Id = "";
-            Usuario = "";
             Descricao = "";
 
             await _pageDialogService.DisplayAlertAsync("Infração Registrada", "Nova Infração Registrada", "Ok");
         }
+
+        public async void TirarFoto()
+        {
+			var photo = await Plugin.Media.CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions() { });
+
+            if (photo != null)
+            {
+				photoStream = photo.GetStream();
+                //FotoSource = ImageSource.FromStream(() => photoStream);
+                //TemFoto = true;
+			}
+		}
 
         public bool FormularioValido { get; set; } = true;
 
@@ -53,12 +69,6 @@ namespace prism1.ViewModels
 		{
 			get { return _id; }
 			set { SetProperty(ref _id, value); }
-		}
-
-		public string Usuario
-		{
-            get { return _usuario; }
-            set { SetProperty(ref _usuario, value); }
 		}
 
 		public string Descricao
@@ -71,6 +81,18 @@ namespace prism1.ViewModels
 		{
 			get { return _isLoading; }
 			set { SetProperty(ref _isLoading, value); }
-		}        
+		}
+
+		public bool TemFoto
+		{
+            get { return _temFoto; }
+			set { SetProperty(ref _temFoto, value); }
+		}
+
+        public ImageSource FotoSource
+		{
+            get { return _fotoSource; }
+			set { SetProperty(ref _fotoSource, value); }
+		}
 	}
 }

@@ -12,11 +12,17 @@ namespace prism1.Droid.Services
         public async Task<bool> Autentica(string email, string senha)
         {
             var authProvider = new FirebaseAuthProvider(new FirebaseConfig(API_KEY));
-
+             
             try 
             {
+                // Autenticando
 				var auth = await authProvider.SignInWithEmailAndPasswordAsync(email, senha);
+
+                // Obtém o Token do Firebase
 				Token = auth.FirebaseToken;
+                // Obtém o UserId
+                UserId = auth.User.LocalId;
+
                 return true;
 			}
             catch (FirebaseAuthException)
@@ -26,5 +32,6 @@ namespace prism1.Droid.Services
 		}
 
         public string Token { get; set; }
+        public string UserId { get; set; }
     }
 }

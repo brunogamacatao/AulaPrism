@@ -3,7 +3,16 @@
     <ContentPage.Content>
         <StackLayout>
             <ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}"/>
-            <ListView ItemsSource="{Binding Infracoes}"/>
+            <ListView ItemsSource="{Binding Infracoes}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ImageCell Height="30" 
+                                   Text="{Binding Descricao}"
+                                   ImageSource="{Binding Foto}">
+                         </ImageCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>                
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

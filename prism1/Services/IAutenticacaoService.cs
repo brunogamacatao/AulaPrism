@@ -7,5 +7,6 @@ namespace prism1.Services
     {
         Task<bool> Autentica(string email, string senha);
         string Token { get; set; }
+        string UserId { get; set; }
     }
 }

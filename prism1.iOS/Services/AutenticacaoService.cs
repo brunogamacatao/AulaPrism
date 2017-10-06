@@ -17,6 +17,7 @@ namespace prism1.iOS.Services
 			{
 				var auth = await authProvider.SignInWithEmailAndPasswordAsync(email, senha);
 				Token = auth.FirebaseToken;
+                UserId = auth.User.LocalId;
 				return true;
 			}
 			catch (FirebaseAuthException)
@@ -26,5 +27,6 @@ namespace prism1.iOS.Services
 		}
 
 		public string Token { get; set; }
+        public string UserId { get; set; }
     }
 }
